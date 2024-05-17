@@ -1,8 +1,8 @@
 from django.contrib import admin
-from .models import CustomUser,CustomPermission,Entreprise,Role,Team,Service
+from .models import CustomUser,Entreprise,Role,Team,Service
 # Register your models here.
 admin.site.register(CustomUser)
-admin.site.register(CustomPermission)
+
 admin.site.register(Entreprise)
 admin.site.register(Role)
 admin.site.register(Team)

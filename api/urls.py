@@ -1,13 +1,13 @@
 from django.urls import path,include
 from rest_framework.routers import DefaultRouter
-from .views import  ServiceView, EntrepriseSuperUserView, TeamView, UserView
+from .views import  ServiceView, EntrepriseView, TeamView, UserView
 # , UserView
 # ,EntrepriseAdminView
 
 router = DefaultRouter()
 
 router.register('team',TeamView)
-router.register('entrepriseSuperUser',EntrepriseSuperUserView)
+router.register('entreprise', EntrepriseView)
 router.register('user',UserView)
 router.register('service',ServiceView)
 

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Entreprise, Service, CustomPermission, Team, Role, CustomUser
+from .models import Entreprise, Service, Team, Role, CustomUser
 
 class EntrepriseSerializer(serializers.ModelSerializer):
     class Meta():
@@ -24,10 +24,6 @@ class TeamSerializer(serializers.ModelSerializer):
         model = Team
         fields = '__all__'
 
-class PermissionSerializer(serializers.ModelSerializer):
-    class Meta():
-        model = CustomPermission
-        fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta():

@@ -53,29 +53,13 @@ class Team(models.Model):
 class Role(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.CharField(max_length=200)
+    permission= models.ManyToManyField(Permission)
     date_de_creation = models.DateTimeField( auto_now_add=True)
     date_de_modification = models.DateTimeField(auto_now=True) 
 
     def __str__(self):
         return self.name
 
-
-class CustomPermission(models.Model):
-    name = models.CharField(max_length=100)
-    description = models.CharField(max_length=200)
-    type = models.CharField(max_length=50,choices=permission_type)
-    roleId = models.ForeignKey(Role, on_delete=models.CASCADE) 
-    date_de_creation = models.DateTimeField( auto_now_add=True)
-    date_de_modification = models.DateTimeField(auto_now=True) 
-
-    permission = models.OneToOneField(
-        Permission,
-        on_delete=models.CASCADE,
-        primary_key=True,
-    )
-
-    def __str__(self):
-        return self.name
 
 class CustomUser(AbstractUser):
     fullname = models.CharField(max_length=100)
@@ -86,14 +70,14 @@ class CustomUser(AbstractUser):
     roleId = models.ForeignKey(Role, on_delete=models.CASCADE, blank=True, null=True)   
    
 
-    def save(self, *args, **kwargs):
-            if self.roleId and self.roleId.name == 'admin':
-                self.is_staff = True
-                self.is_superuser = False
-            elif self.roleId and self.roleId.name == 'superuser':
-                self.is_staff = True
-                self.is_superuser = True
-            else:
-                self.is_staff = False
-                self.is_superuser = False 
-            super().save(*args, **kwargs)
+    # def save(self, *args, **kwargs):
+    #         if self.roleId and self.roleId.name == 'admin':
+    #             self.is_staff = True
+    #             self.is_superuser = False
+    #         elif self.roleId and self.roleId.name == 'superuser':
+    #             self.is_staff = True
+    #             self.is_superuser = True
+    #         else:
+    #             self.is_staff = False
+    #             self.is_superuser = False 
+    #         super().save(*args, **kwargs)
