@@ -377,8 +377,3 @@ class TeamView(viewsets.ModelViewSet):
             }
             return Response(msg, status=status.HTTP_403_FORBIDDEN)
     
-class UserView(viewsets.ModelViewSet):
-    queryset= CustomUser.objects.all()
-    serializer_class = UserSerializer
-#     permission_classes = [IsAuthenticated]
-
