@@ -58,7 +58,7 @@ class EntrepriseView(viewsets.ModelViewSet):
             return Response(msg, status=status.HTTP_200_OK)
         else:
             msg={
-                'message': 'Vous n aveez pas le droit d activation/desactivation'
+                'message': 'Vous n\'avez pas le droit d activation/desactivation'
             }
             return Response(msg, status=status.HTTP_403_FORBIDDEN)
     
@@ -104,7 +104,7 @@ class EntrepriseView(viewsets.ModelViewSet):
             return Response(status=status.HTTP_400_BAD_REQUEST)   
         else:
             msg={
-                'message': 'Vous n aveez pas le droit de modifier une entreprise'
+                'message': 'Vous n\'avez pas le droit de modifier une entreprise'
             }
             return Response(msg, status=status.HTTP_403_FORBIDDEN)
 
@@ -151,7 +151,7 @@ class ServiceView(viewsets.ModelViewSet):
 
     def destroy(self, request, *args, **kwargs):
         msg={
-            'message' : 'Vous ne pouvez pas supprimer cette entreprise'
+            'message' : 'Vous ne pouvez pas supprimer ce service'
         }
         return Response(msg, status=status.HTTP_401_UNAUTHORIZED)
 
@@ -226,7 +226,7 @@ class ServiceView(viewsets.ModelViewSet):
             return Response(msg, status=status.HTTP_200_OK)
         else:
             msg={
-                'message': 'Vous n aveez pas le droit d activation/desactivation'
+                'message': 'Vous n\'avez pas le droit d activation/desactivation'
             }
             return Response(msg, status=status.HTTP_403_FORBIDDEN)
 
@@ -253,7 +253,7 @@ class TeamView(viewsets.ModelViewSet):
             serializer.is_valid(raise_exception=True)
             self.perform_create(serializer)
             msg = {
-                'message': 'Team créer avec succees',
+                'message': 'Team crée avec succees',
                 'resultat' : serializer.data
             }
             return Response(msg, status=status.HTTP_201_CREATED)
@@ -279,7 +279,6 @@ class TeamView(viewsets.ModelViewSet):
             }
             return Response(msg, status=status.HTTP_403_FORBIDDEN)
 
-    # @action(methods=['get'], detail=True)
     def retrieve(self,request,pk=None):
         user= request.user
         if  user.roleId.name == 'admin':
@@ -373,7 +372,7 @@ class TeamView(viewsets.ModelViewSet):
             return Response(msg, status=status.HTTP_200_OK)
         else:
             msg={
-                'message': 'Vous n aveez pas le droit d activation/desactivation'
+                'message': 'Vous n\'avez pas le droit d activation/desactivation'
             }
             return Response(msg, status=status.HTTP_403_FORBIDDEN)
     
